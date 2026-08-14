@@ -8,12 +8,26 @@
         <th>Name</th>
         <th>Description</th>
         <th>GitHubUrl</th>
+        
+           <th>Category</th>
+           <th>IsPublic</th>
+             <th>ProjectType</th>
+             <th>License</th>
+             <th>Details</th>
+         <th>Edit</th>
+          <th>Delete</th>
+             
     </tr>
 @foreach (var item in Model) {
     <tr>
         <td>@item.Name</td>
         <td>@item.Description</td>
         <td><a href="@item.GitHubUrl">@item.GitHubUrl</a></td>
+        <td>@item.Category</td>
+        <td>@item.IsPublic</td>
+        <td>@item.ProjectType</td>
+        <td>@item.License</td>
+        
         <td><a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">
     تفاصيل
 </a></td>

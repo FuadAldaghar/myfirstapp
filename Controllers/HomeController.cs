@@ -20,13 +20,21 @@ public IActionResult Test()
         {   Id=1,
             Name = "NotesApp",
             Description = "تطبيق ملاحظات باستخدام ASP.NET Core",
-            GitHubUrl = "https://github.com/FuadAldaghar/NotesAppPyaspdotnet"
+            GitHubUrl = "https://github.com/FuadAldaghar/NotesAppPyaspdotnet",
+            IsPublic=true,
+            ProjectType="Personal",
+            License="MIT",
+            Category="Web"
         },
         new Project
         {Id=2,
             Name = "AnotherProject",
             Description = "وصف المشروع الثاني",
-            GitHubUrl = "https://github.com/FuadAldaghar/AnotherProject"
+            GitHubUrl = "https://github.com/FuadAldaghar/AnotherProject" ,
+              IsPublic=true,
+            ProjectType="Personal",
+            License="MIT",
+            Category="Web"  
         }
     };
 
@@ -62,20 +70,38 @@ public IActionResult Create(Project project)
 {
     if (!ModelState.IsValid)
     {
-    //       foreach (var state in ModelState)
-    // {
-    //     foreach (var error in state.Value.Errors)
-    //     {
-    //         Console.WriteLine(error.ErrorMessage);
-    //     }
-    // }
-         return View(project);
-
-
+        return View(project);
     }
-     project.Id = projects.Max(p => p.Id) + 1;
+
+    // حفظ الصورة
+    // if (image != null && image.Length > 0)
+    // {
+    //     var uploadsFolder = Path.Combine(
+    //         Directory.GetCurrentDirectory(),
+    //         "wwwroot/images"
+    //     );
+
+    //     if (!Directory.Exists(uploadsFolder))
+    //     {
+    //         Directory.CreateDirectory(uploadsFolder);
+    //     }
+
+    //     var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+
+    //     var filePath = Path.Combine(uploadsFolder, fileName);
+
+    //     using (var stream = new FileStream(filePath, FileMode.Create))
+    //     {
+    //         image.CopyTo(stream);
+    //     }
+
+    //     project.ImagePath = "/images/" + fileName;
+    // }
+
+    project.Id = projects.Max(p => p.Id) + 1;
+
     projects.Add(project);
-    // return Content("البيانات صحيحة");
+
     return RedirectToAction("Index");
 }
 //edit project 
@@ -105,6 +131,10 @@ public IActionResult Edit(Project project)
     existingProject.Name = project.Name;
     existingProject.Description = project.Description;
     existingProject.GitHubUrl = project.GitHubUrl;
+    existingProject.Category = project.Category;
+    existingProject.IsPublic = project.IsPublic;
+    existingProject.ProjectType = project.ProjectType;
+    existingProject.License = project.License;
     return RedirectToAction("Index");
 }
 //delete project 

@@ -10,4 +10,16 @@ public class Project
     [Required]
     [Url]
     public string GitHubUrl { get; set; }
+
+
+/////////////////
+      public string Category { get; set; }
+
+      public bool IsPublic { get; set; }
+
+      public string ProjectType { get; set; }
+
+      public string License { get; set; }
+
+    //   public string ImagePath { get; set; }
 }

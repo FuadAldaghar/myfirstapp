@@ -1,0 +1,162 @@
+// using System.Diagnostics;
+// using Microsoft.AspNetCore.Mvc;
+// using MyFirstApp.Models;
+
+// namespace MyFirstApp.Controllers_1;
+
+// public class HomeController_1 : Controller
+// {
+//     private readonly ILogger<HomeController_1> _logger;
+//     //routing test
+// [Route("test")]
+// public IActionResult Test()
+// {
+//     return Content("Routing is working!");
+// }
+//     // private static List<Project> projects = new();
+//     private static List<Project> projects = new List<Project>
+//     {
+//         new Project
+//         {   Id=1,
+//             Name = "NotesApp",
+//             Description = "تطبيق ملاحظات باستخدام ASP.NET Core",
+//             GitHubUrl = "https://github.com/FuadAldaghar/NotesAppPyaspdotnet"
+//         },
+//         new Project
+//         {Id=2,
+//             Name = "AnotherProject",
+//             Description = "وصف المشروع الثاني",
+//             GitHubUrl = "https://github.com/FuadAldaghar/AnotherProject"
+//         }
+//     };
+
+//     public HomeController(ILogger<HomeController_1> logger)
+//     {
+//         _logger = logger;
+//     }
+
+//     public IActionResult Index()
+//     {
+//         // ViewData["name"]="fuad aldaghar";
+//     //     var project = new Project
+//     // {
+//     //     Name = "NotesApp",
+//     //     Description = "تطبيق ملاحظات باستخدام ASP.NET Core",
+//     //     GitHubUrl = "https://github.com/FuadAldaghar/NotesAppPyaspdotnet"
+//     // };
+
+ 
+//         // ViewBag.project = project;
+       
+//         return View(projects);
+//     }
+
+// [HttpGet]
+// public IActionResult Create()
+// {
+//     return View();
+// }
+
+// [HttpPost]
+// public IActionResult Create(Project project)
+// {
+//     if (!ModelState.IsValid)
+//     {
+//     //       foreach (var state in ModelState)
+//     // {
+//     //     foreach (var error in state.Value.Errors)
+//     //     {
+//     //         Console.WriteLine(error.ErrorMessage);
+//     //     }
+//     // }
+//          return View(project);
+
+
+//     }
+//      project.Id = projects.Max(p => p.Id) + 1;
+//     projects.Add(project);
+//     // return Content("البيانات صحيحة");
+//     return RedirectToAction("Index");
+// }
+// //edit project 
+// [HttpGet]
+// public IActionResult Edit(int id)
+// {
+//     var project = projects.Find(p => p.Id == id);
+//     if (project == null)
+//     {
+//         return NotFound();
+//     }
+//     return View(project);
+// }
+// [HttpPost]
+// public IActionResult Edit(Project project)
+// {//validation
+//     if (!ModelState.IsValid)
+//     {
+//         return View(project);
+//     }
+
+//     var existingProject = projects.Find(p => p.Id == project.Id);
+//     if (existingProject == null)
+//     {
+//         return NotFound();
+//     }
+//     existingProject.Name = project.Name;
+//     existingProject.Description = project.Description;
+//     existingProject.GitHubUrl = project.GitHubUrl;
+//     return RedirectToAction("Index");
+// }
+// //delete project 
+// [HttpPost]
+// public IActionResult Delete(int id)
+// {
+//     var project = projects.Find(p => p.Id == id);
+//     if (project == null)
+//     {
+//         return NotFound();
+//     }
+//     projects.Remove(project);
+//     return RedirectToAction("Index");
+// }
+// // [HttpPost]
+// // public IActionResult Delete(Project project)
+// // {
+// //     var existingProject = projects.Find(p => p.Id == project.Id);
+// //     if (existingProject == null)
+// //     {
+// //         return NotFound();
+// //     }
+// //     projects.Remove(existingProject);
+// //     return RedirectToAction("Index");
+// // }
+
+
+// //Details
+// [Route("Details/{id}")]
+// public IActionResult Details(int id)
+// {
+   
+
+//     var project = projects.FirstOrDefault(p => p.Id == id);
+
+//     if (project == null)
+//     {
+//         return NotFound();
+//     }
+
+//     return View(project);
+// }
+// //
+
+//     public IActionResult Privacy()
+//     {
+//         return View();
+//     }
+
+//     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+//     public IActionResult Error()
+//     {
+//         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+//     }
+// }
