@@ -7,7 +7,12 @@ namespace MyFirstApp.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
+    //routing test
+[Route("test")]
+public IActionResult Test()
+{
+    return Content("Routing is working!");
+}
     // private static List<Project> projects = new();
     private static List<Project> projects = new List<Project>
     {
@@ -128,8 +133,11 @@ public IActionResult Delete(int id)
 
 
 //Details
+[Route("Details/{id}")]
 public IActionResult Details(int id)
 {
+   
+
     var project = projects.FirstOrDefault(p => p.Id == id);
 
     if (project == null)
