@@ -1,0 +1,54 @@
+
+@model List<MyFirstApp.Models.Project>
+
+<div>
+<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<table border="5"  >
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>GitHubUrl</th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Description</td>
+        <td><a href="@item.GitHubUrl">@item.GitHubUrl</a></td>
+        <td><a asp-action="Details" asp-route-id="@item.Id">
+    تفاصيل
+</a></td>
+        <td><a asp-action="Edit" asp-route-id="@item.Id">
+
+    تعديل
+</a></td>
+
+<td>
+
+<a asp-action="Delete" asp-route-id="@item.Id"> حذف</a>
+     
+</td>
+
+
+<td>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="id" value="@item.Id" />
+
+    <button type="submit"
+            onclick="return confirm('هل أنت متأكد من حذف المشروع؟')">
+        حذف
+    </button>
+</form>
+
+
+</td>
+    </tr>
+}
+    </table>
+    <!-- --------------------------------------creat project -->
+
+    <a asp-controller="Home" asp-action="Create">
+    إضافة مشروع
+</a>
+
+</div>
