@@ -82,7 +82,11 @@
             <option value="None">None</option>
         </select>
     </div>
-
+    <div>
+        <label asp-for="TechnologiesCount"></label>
+        <input asp-for="TechnologiesCount" />
+        <span asp-validation-for="TechnologiesCount"></span>
+    </div>
     <button type="submit">حفظ التعديل</button>
 
 </form>

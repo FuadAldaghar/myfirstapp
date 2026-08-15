@@ -13,6 +13,7 @@
            <th>IsPublic</th>
              <th>ProjectType</th>
              <th>License</th>
+             <th>TechnologiesCount</th>
              <th>Details</th>
          <th>Edit</th>
           <th>Delete</th>
@@ -27,7 +28,7 @@
         <td>@item.IsPublic</td>
         <td>@item.ProjectType</td>
         <td>@item.License</td>
-        
+        <td>@item.TechnologiesCount</td>
         <td><a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">
     تفاصيل
 </a></td>

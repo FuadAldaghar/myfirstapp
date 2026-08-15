@@ -18,23 +18,25 @@ public IActionResult Test()
     {
         new Project
         {   Id=1,
-            Name = "NotesApp",
+            Name = "N",
             Description = "تطبيق ملاحظات باستخدام ASP.NET Core",
             GitHubUrl = "https://github.com/FuadAldaghar/NotesAppPyaspdotnet",
             IsPublic=true,
             ProjectType="Personal",
             License="MIT",
-            Category="Web"
+            Category="Web Development", 
+               TechnologiesCount = 10
         },
         new Project
         {Id=2,
-            Name = "AnotherProject",
+            Name = "A",
             Description = "وصف المشروع الثاني",
             GitHubUrl = "https://github.com/FuadAldaghar/AnotherProject" ,
               IsPublic=true,
             ProjectType="Personal",
             License="MIT",
-            Category="Web"  
+            Category="Web Development", 
+              TechnologiesCount = 10 
         }
     };
 
@@ -135,6 +137,7 @@ public IActionResult Edit(Project project)
     existingProject.IsPublic = project.IsPublic;
     existingProject.ProjectType = project.ProjectType;
     existingProject.License = project.License;
+    existingProject.TechnologiesCount = project.TechnologiesCount;
     return RedirectToAction("Index");
 }
 //delete project 
