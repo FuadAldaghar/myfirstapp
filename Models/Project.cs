@@ -1,4 +1,6 @@
+
 using System.ComponentModel.DataAnnotations;
+using MyFirstApp.Validation;
 namespace MyFirstApp.Models;    
 public class Project
 {   
@@ -11,9 +13,10 @@ public class Project
     [Required]
     [StringLength(200)]
     public string Description { get; set; }
-    [Required]
-    [Url]
-    public string GitHubUrl { get; set; }
+
+   [Url]
+   [ProjectValidation]
+   public string? GitHubUrl { get; set; }
 
 
 /////////////////
