@@ -53,11 +53,124 @@ public IActionResult Test()
     //     _logger = logger;
     // }
 
-    public IActionResult Index()
+ public IActionResult Index(
+    string? search,
+    string? category,
+    string? projectType,
+    string? visibility,
+    string? sort,
+    int page = 1)
+{
+    IQueryable<Project> projects = _context.Projects;
+
+
+    // Search
+    if (!string.IsNullOrEmpty(search))
     {
-       var projects = _context.Projects.ToList();
-        return View(projects);
+        projects = projects.Where(p =>
+            p.Name.Contains(search));
     }
+
+
+    // Category
+    if (!string.IsNullOrEmpty(category))
+    {
+        projects = projects.Where(p =>
+            p.Category == category);
+    }
+
+
+    // Project Type
+    if (!string.IsNullOrEmpty(projectType))
+    {
+        projects = projects.Where(p =>
+            p.ProjectType == projectType);
+    }
+
+
+    // Visibility
+    if (!string.IsNullOrEmpty(visibility))
+    {
+        bool isPublic = visibility == "true";
+
+        projects = projects.Where(p =>
+            p.IsPublic == isPublic);
+    }
+
+
+    // Sorting
+    // projects = sort switch
+    // {
+    //     "technologies" =>
+    //         projects.OrderByDescending(p =>
+    //             p.TechnologiesCount),
+
+    //     "category" =>
+    //         projects.OrderBy(p =>
+    //             p.Category),
+
+    //     _ =>
+    //         projects.OrderBy(p =>
+    //             p.Name)
+    // };
+
+    switch (sort)
+{
+    case "technologies":
+        projects = projects.OrderByDescending(p => p.TechnologiesCount);
+        break;
+
+    case "category":
+        projects = projects.OrderBy(p => p.Category);
+        break;
+
+    default:
+        projects = projects.OrderBy(p => p.Name);
+        break;
+}
+
+
+    // Pagination
+    int pageSize = 5;
+
+    int totalProjects = projects.Count();
+
+    int totalPages =
+        (int)Math.Ceiling(
+            totalProjects / (double)pageSize);
+
+
+    var result = projects
+        .Skip((page - 1) * pageSize)
+        .Take(pageSize)
+        .ToList();
+
+
+    // Data for View
+    ViewBag.Search = search;
+    ViewBag.Category = category;
+    ViewBag.ProjectType = projectType;
+    ViewBag.Visibility = visibility;
+    ViewBag.Sort = sort ?? "name";
+
+    ViewBag.Categories = _context.Projects
+        .Select(p => p.Category)
+        .Distinct()
+        .OrderBy(c => c)
+        .ToList();
+
+    ViewBag.ProjectTypes = _context.Projects
+        .Select(p => p.ProjectType)
+        .Distinct()
+        .OrderBy(t => t)
+        .ToList();
+
+    ViewBag.CurrentPage = page;
+    ViewBag.TotalPages = totalPages;
+
+
+    return View(result);
+}
 
 [HttpGet]
 public IActionResult Create()
@@ -149,8 +262,8 @@ public IActionResult Delete(int id)
         return NotFound();
     }
     //projects.Remove(project);
-  _context.Projects.Remove(project);
-   _context.SaveChanges();
+    _context.Projects.Remove(project);
+    _context.SaveChanges();
     return RedirectToAction("Index");
 }
 // [HttpPost]
