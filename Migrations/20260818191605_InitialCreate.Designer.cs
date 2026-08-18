@@ -11,8 +11,8 @@ using MyFirstApp.Data;
 namespace MyFirstApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260818184846_AddProjectRelationships")]
-    partial class AddProjectRelationships
+    [Migration("20260818191605_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

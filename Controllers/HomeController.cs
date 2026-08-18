@@ -10,7 +10,6 @@ public class HomeController : Controller
     //
     private readonly AppDbContext _context;
 
-
     public HomeController(ILogger<HomeController> logger,AppDbContext context)
      {
     _logger = logger;

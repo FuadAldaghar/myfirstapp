@@ -6,20 +6,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyFirstApp.Migrations
 {
-    public partial class AddProjectRelationships : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Category",
-                table: "Projects");
-
-            migrationBuilder.AddColumn<int>(
-                name: "CategoryId",
-                table: "Projects",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "Categories",
@@ -33,6 +25,53 @@ namespace MyFirstApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Technologies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Technologies", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Description = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    GitHubUrl = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsPublic = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    ProjectType = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    License = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TechnologiesCount = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Projects_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -62,21 +101,6 @@ namespace MyFirstApp.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Technologies",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Technologies", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "ProjectTechnology",
                 columns: table => new
                 {
@@ -102,39 +126,24 @@ namespace MyFirstApp.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects_CategoryId",
-                table: "Projects",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ProjectDetails_ProjectId",
                 table: "ProjectDetails",
                 column: "ProjectId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Projects_CategoryId",
+                table: "Projects",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProjectTechnology_TechnologiesId",
                 table: "ProjectTechnology",
                 column: "TechnologiesId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Projects_Categories_CategoryId",
-                table: "Projects",
-                column: "CategoryId",
-                principalTable: "Categories",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Projects_Categories_CategoryId",
-                table: "Projects");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
-
             migrationBuilder.DropTable(
                 name: "ProjectDetails");
 
@@ -142,22 +151,13 @@ namespace MyFirstApp.Migrations
                 name: "ProjectTechnology");
 
             migrationBuilder.DropTable(
+                name: "Projects");
+
+            migrationBuilder.DropTable(
                 name: "Technologies");
 
-            migrationBuilder.DropIndex(
-                name: "IX_Projects_CategoryId",
-                table: "Projects");
-
-            migrationBuilder.DropColumn(
-                name: "CategoryId",
-                table: "Projects");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Category",
-                table: "Projects",
-                type: "longtext",
-                nullable: false)
-                .Annotation("MySql:CharSet", "utf8mb4");
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }
