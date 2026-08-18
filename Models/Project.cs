@@ -20,7 +20,7 @@ public class Project
 
 
 /////////////////
-      public string Category { get; set; }
+     // public string Category { get; set; }
 
       public bool IsPublic { get; set; }
 
@@ -32,4 +32,17 @@ public class Project
 
     [Range(1, 20, ErrorMessage = "عدد التقنيات يجب أن يكون بين 1 و20")]
     public int TechnologiesCount { get; set; }
+
+
+
+      // One-to-Many
+    public int CategoryId { get; set; }
+    public Category? Category { get; set; }
+
+    // Many-to-Many
+    public ICollection<Technology> Technologies { get; set; }
+        = new List<Technology>();
+
+    // One-to-One
+    public ProjectDetails? ProjectDetails { get; set; }
 }

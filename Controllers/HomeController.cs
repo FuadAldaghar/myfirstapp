@@ -10,6 +10,7 @@ public class HomeController : Controller
     //
     private readonly AppDbContext _context;
 
+
     public HomeController(ILogger<HomeController> logger,AppDbContext context)
      {
     _logger = logger;
@@ -75,8 +76,12 @@ public IActionResult Test()
     // Category
     if (!string.IsNullOrEmpty(category))
     {
-        projects = projects.Where(p =>
-            p.Category == category);
+        // projects = projects.Where(p =>
+        //     p.Category == category);
+
+          projects = projects.Where(p =>
+             p.Category != null && p.Category.Name == category);
+ 
     }
 
 
