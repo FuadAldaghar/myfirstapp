@@ -1,0 +1,82 @@
+@model IEnumerable<MyFirstApp.Models.Project>
+<h1>projectsforcatgory</h1>
+<table border=2>
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>CATEGORY</th>
+            <th>TECHNOLOGIES</th>
+            <th>CLIENT</th>
+            <th>START DATE</th>
+            <th>END DATE</th>
+            <th>BUDGET</th>
+            <th>PUBLIC</th>
+            <th>ACTIONS</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var project in Model)
+        {
+            <tr>
+                <td>
+                    @project.Name
+                </td>
+
+                <td>
+                    @project.Category?.Name
+                </td>
+
+                <td>
+                    @foreach (var technology in project.Technologies)
+                    {
+                        <span>@technology.Name</span>
+                        <br />
+                    }
+                </td>
+
+                <td>
+                    @project.ProjectDetails?.Client
+                </td>
+
+                <td>
+                    @project.ProjectDetails?.StartDate
+                </td>
+
+                <td>
+                    @project.ProjectDetails?.EndDate
+                </td>
+
+                <td>
+                    @project.ProjectDetails?.Budget
+                </td>
+
+                <td>
+                    @(project.IsPublic ? "YES" : "NO")
+                </td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@project.Id">
+                        DETAILS
+                    </a>
+
+                    |
+
+                    <a asp-action="Edit"
+                       asp-route-id="@project.Id">
+                        EDIT
+                    </a>
+
+                    |
+
+                    <a asp-action="Delete"
+                       asp-route-id="@project.Id">
+                        DELETE
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

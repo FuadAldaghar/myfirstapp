@@ -25,43 +25,81 @@ namespace MyFirstApp.Controllers
 
             return View(categories);
         }
-        //  [HttpGet]
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
-        // [HttpPost]
+
+        [HttpPost]
         public IActionResult Create(Category category)
         {
-            // if(ModelState.IsValid)
-            // {
-            // _context.Categories.Add(category);
-            // _context.SaveChanges();
-            // return RedirectToAction(nameof(Index));
-            // }
-            // return View(category);
+            if (ModelState.IsValid)
+            {
 
-            return RedirectToAction(nameof(Index));
+                _context.Categories.Add(category);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(category);
+
+        }
+
+       public IActionResult Projectsforcatgory(int id)
+        {      
+                var categoryprojects = _context.Projects.Where(p =>p.CategoryId==id)
+                 .Include(p => p.Category)
+                 .Include(p => p.Technologies)
+                 .Include(p => p.ProjectDetails)
+                 .ToList();
+              
+            
+            // var categoryprojects = _context.Projects
+            //     .Include(p => p.Category)
+            //     .Include(p => p.Technologies)
+            //     .Include(p => p.ProjectDetails
+            //     .ToList();
+          if(categoryprojects==null)
+{
+    return NotFound();
+}
+            return View(categoryprojects.ToList());
         }
 
 
 
-        // GET: /Categories/Details/5
-        // (لتنفيذ "اختيار أحدها لإجراء عملية أخرى" - use case قادم)
-        public IActionResult Details(int id)
-        {
-            return View();
-        }
+
+        // // GET: /Categories/Details/5
+        // // (لتنفيذ "اختيار أحدها لإجراء عملية أخرى" - use case قادم)
+        // public IActionResult Details(int id)
+        // {
+        //     return View();
+        // }
 
         // GET: /Categories/Edit/5
         // (لتنفيذ "اختيار أحدها لإجراء عملية أخرى" - use case قادم)
+        
         public IActionResult Edit(int id)
         {
-
-            return View();
+               var category =_context.Categories.Find(id);
+               if(category==null)
+               {
+                return NotFound();
+               }
+            return View(category);
         }
 
-
+        [HttpPost]
+        public IActionResult Edit(Category category)
+        { 
+if(ModelState.IsValid)
+{
+    _context.Categories.Update(category);
+    _context.SaveChanges();
+    return RedirectToAction(nameof(Index));
+}
+            return View(category);
+        }
 
         [HttpPost]
         public IActionResult Delete(int id)
