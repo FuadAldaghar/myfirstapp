@@ -1,0 +1,220 @@
+
+@model List<MyFirstApp.Models.Project>
+
+<div>
+<!-- search and linqe application -->
+<!-- Search and LINQ application -->
+<div>
+
+    <form asp-action="Index" asp-controller="Home" method="get">
+
+        <!-- Search -->
+        <input type="text"
+               name="search"
+               value="@ViewBag.Search"
+               placeholder="Search projects..." />
+
+
+        <!-- Category -->
+        <select name="category">
+            <option value="">All Categories</option>
+
+            @foreach (var category in ViewBag.Categories)
+            {
+                <option value="@category"
+                        selected="@(ViewBag.Category == category ? "selected" : null)">
+                    @category
+                </option>
+            }
+        </select>
+
+
+        <!-- Project Type -->
+        <select name="projectType">
+            <option value="">All Types</option>
+
+            @foreach (var type in ViewBag.ProjectTypes)
+            {
+                <option value="@type"
+                        selected="@(ViewBag.ProjectType == type ? "selected" : null)">
+                    @type
+                </option>
+            }
+        </select>
+
+
+        <!-- Visibility -->
+        <select name="visibility">
+            <option value="">All Visibility</option>
+            <option value="true"
+                    selected="@(ViewBag.Visibility == "true" ? "selected" : null)">
+                Public
+            </option>
+
+            <option value="false"
+                    selected="@(ViewBag.Visibility == "false" ? "selected" : null)">
+                Private
+            </option>
+        </select>
+
+
+        <!-- Sort -->
+        <select name="sort">
+            <option value="name"
+                    selected="@(ViewBag.Sort == "name" ? "selected" : null)">
+                Name
+            </option>
+
+            <option value="technologies"
+                    selected="@(ViewBag.Sort == "technologies" ? "selected" : null)">
+                Technologies
+            </option>
+
+            <option value="category"
+                    selected="@(ViewBag.Sort == "category" ? "selected" : null)">
+                Category
+            </option>
+        </select>
+
+
+        <button type="submit">
+            SEARCH
+        </button>
+
+        <a asp-action="Index">
+            RESET
+        </a>
+
+    </form>
+
+</div>
+
+<!-- <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> -->
+<table border="5"  >
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>GitHubUrl</th>
+        
+           <th>Category</th>
+           <th>IsPublic</th>
+             <th>ProjectType</th>
+             <th>License</th>
+             <th>TechnologiesCount</th>
+             <th>Details</th>
+         <th>Edit</th>
+          <th>Delete</th>
+             
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Description</td>
+        <td><a href="@item.GitHubUrl">@item.GitHubUrl</a></td>
+        <td>@item.Category</td>
+        <td>@item.IsPublic</td>
+        <td>@item.ProjectType</td>
+        <td>@item.License</td>
+        <td>@item.TechnologiesCount</td>
+        <td><a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">
+    تفاصيل
+</a></td>
+        <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">
+
+    تعديل
+</a></td>
+
+
+
+
+<td>
+
+<form asp-action="Delete" asp-controller="Home" method="post">
+    <input type="hidden" name="id" value="@item.Id" />
+
+    <button type="submit"
+            onclick="return confirm('هل أنت متأكد من حذف المشروع؟')">
+        حذف
+    </button>
+</form>
+
+
+</td>
+ </tr>
+}
+</table>
+
+@if (ViewBag.TotalPages > 1)
+{
+    <div>
+
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <a asp-action="Index"
+               asp-route-search="@ViewBag.Search"
+               asp-route-category="@ViewBag.Category"
+               asp-route-projectType="@ViewBag.ProjectType"
+               asp-route-visibility="@ViewBag.Visibility"
+               asp-route-sort="@ViewBag.Sort"
+               asp-route-page="@(ViewBag.CurrentPage - 1)">
+                ← Previous
+            </a>
+        }
+
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <a asp-action="Index"
+               asp-route-search="@ViewBag.Search"
+               asp-route-category="@ViewBag.Category"
+               asp-route-projectType="@ViewBag.ProjectType"
+               asp-route-visibility="@ViewBag.Visibility"
+               asp-route-sort="@ViewBag.Sort"
+               asp-route-page="@i">
+
+                @i
+
+            </a>
+        }
+
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <a asp-action="Index"
+               asp-route-search="@ViewBag.Search"
+               asp-route-category="@ViewBag.Category"
+               asp-route-projectType="@ViewBag.ProjectType"
+               asp-route-visibility="@ViewBag.Visibility"
+               asp-route-sort="@ViewBag.Sort"
+               asp-route-page="@(ViewBag.CurrentPage + 1)">
+                Next →
+            </a>
+        }
+
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+    <!-- --------------------------------------creat project -->
+
+    <!-- <a asp-controller="Home" asp-action="Create">
+    إضافة مشروع
+</a> -->
+
+</div>
+
+@section Scripts
+{
+    <script>
+        console.log("Index page");
+    </script>
+}

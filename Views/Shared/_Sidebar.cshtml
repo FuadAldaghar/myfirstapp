@@ -2,24 +2,36 @@
 
 <nav>
 
-    <a href="/Home/Index">
+    <a asp-controller="Home" asp-action="Index">
         الرئيسية
     </a>
 
-    <a href="/Home/Index">
+    <a asp-controller="Projects" asp-action="Index">
         المشاريع
     </a>
 
-    <a href="/Home/Create">
+    <a asp-controller="Projects" asp-action="Create">
         إضافة مشروع
     </a>
 
-    <a href="#">
-        المستخدمون
+    <a asp-controller="Categories" asp-action="Index">
+        التصنيفات
     </a>
 
-    <a href="#">
-        الإعدادات
+    <a asp-controller="Categories" asp-action="Create">
+        إضافة تصنيف
+    </a>
+
+    <a asp-controller="Technologies" asp-action="Index">
+        التقنيات
+    </a>
+
+    <a asp-controller="Technologies" asp-action="Create">
+        إضافة تقنية
+    </a>
+
+    <a asp-controller="ProjectDetails" asp-action="Index">
+        تفاصيل المشاريع
     </a>
 
 </nav>

@@ -15,16 +15,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\ComputerWorled\.gemini\antigravity-ide\scratch\MyFirstApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Home/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGUuY3NodG1s
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Categories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Home/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxzLmNzaHRtbA==
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Categories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Home/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0LmNzaHRtbA==
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Categories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Home/Index.cshtml]
@@ -33,6 +33,50 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/ProjectDetails/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdERldGFpbHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/ProjectDetails/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdERldGFpbHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/ProjectDetails/Details_old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdERldGFpbHNcRGV0YWlsc19vbGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/ProjectDetails/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdERldGFpbHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/ProjectDetails/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdERldGFpbHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Projects/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Projects/Create_old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcQ3JlYXRlX29sZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Projects/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Projects/Edit_old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRWRpdF9vbGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Projects/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Projects/Index_old.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXhfb2xkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Shared/Error.cshtml]
@@ -57,6 +101,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Technologies/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjaG5vbG9naWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Technologies/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjaG5vbG9naWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/Technologies/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVjaG5vbG9naWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ComputerWorled/.gemini/antigravity-ide/scratch/MyFirstApp/Views/_ViewImports.cshtml]
