@@ -48,21 +48,11 @@ namespace MyFirstApp.Controllers
        public IActionResult Projectsforcatgory(int id)
         {      
                 var categoryprojects = _context.Projects.Where(p =>p.CategoryId==id)
-                 .Include(p => p.Category)
+                .Include(p => p.Category)
                  .Include(p => p.Technologies)
                  .Include(p => p.ProjectDetails)
                  .ToList();
               
-            
-            // var categoryprojects = _context.Projects
-            //     .Include(p => p.Category)
-            //     .Include(p => p.Technologies)
-            //     .Include(p => p.ProjectDetails
-            //     .ToList();
-          if(categoryprojects==null)
-{
-    return NotFound();
-}
             return View(categoryprojects.ToList());
         }
 

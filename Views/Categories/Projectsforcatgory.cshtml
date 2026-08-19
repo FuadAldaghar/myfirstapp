@@ -1,5 +1,12 @@
 @model IEnumerable<MyFirstApp.Models.Project>
 <h1>projectsforcatgory</h1>
+@if (!Model.Any())
+{
+    <p>لا توجد مشاريع لهذا التصنيف.</p>
+}
+else
+{
+
 <table border=2>
     <thead>
         <tr>
@@ -80,3 +87,4 @@
     </tbody>
 </table>
 
+}
