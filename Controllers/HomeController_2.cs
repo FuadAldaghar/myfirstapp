@@ -80,7 +80,7 @@
 
 //           projects = projects.Where(p =>
 //              p.Category != null && p.Category.Name == category);
- 
+
 //     }
 
 
@@ -203,7 +203,7 @@
 // {
 //     // var project = projects.Find(p => p.Id == id);
 //     var project = _context.Projects.FirstOrDefault(p => p.Id == id);
-    
+
 //     if (project == null)
 //     {
 //         return NotFound();
@@ -287,7 +287,7 @@
 // [Route("Details/{id}")]
 // public IActionResult Details(int id)
 // {
-   
+
 
 //     //var project = projects.FirstOrDefault(p => p.Id == id);
 
@@ -296,7 +296,7 @@
 //     {
 //         return NotFound();
 //     }
- 
+
 //     return View(project);
 // }
 // //

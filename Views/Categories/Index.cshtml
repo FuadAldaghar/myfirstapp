@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MyFirstApp.Models.Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h1>CATEGORIES</h1>
+
+<table border=2>
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>PROJECTS COUNT</th>
+            <th>ACTIONS</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>
+                    @category.Name
+                </td>
+
+                <td>
+                    @category.Projects.Count
+                </td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@category.Id">
+                        DETAILS
+                    </a>
+
+                </td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@category.Id">
+                        EDIT
+                    </a>
+
+                </td>
+             <td>
+
+                    <form asp-action="Delete" asp-controller="Categories" method="post">
+                    <input type="hidden" name="id" value="@category.Id" />
+
+                       <button type="submit"
+                   onclick="return confirm('هل أنت متأكد من حذف المشروع؟')">
+                     حذف
+                    </button>
+                  </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -6,7 +6,7 @@ namespace MyFirstApp.Controllers
 {
     public class ProjectsController : Controller
     {
-         private readonly AppDbContext _context;
+        private readonly AppDbContext _context;
 
         public ProjectsController(AppDbContext context)
         {

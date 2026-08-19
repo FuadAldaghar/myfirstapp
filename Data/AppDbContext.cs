@@ -120,7 +120,7 @@ public class AppDbContext : DbContext
             .HasOne(p => p.Category)
             .WithMany(c => c.Projects)
             .HasForeignKey(p => p.CategoryId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
 
 
         // ==========================================

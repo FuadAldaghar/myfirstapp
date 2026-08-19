@@ -45,9 +45,9 @@
 //     //     GitHubUrl = "https://github.com/FuadAldaghar/NotesAppPyaspdotnet"
 //     // };
 
- 
+
 //         // ViewBag.project = project;
-       
+
 //         return View(projects);
 //     }
 
@@ -136,7 +136,7 @@
 // [Route("Details/{id}")]
 // public IActionResult Details(int id)
 // {
-   
+
 
 //     var project = projects.FirstOrDefault(p => p.Id == id);
 

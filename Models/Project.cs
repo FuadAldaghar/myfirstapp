@@ -1,32 +1,32 @@
 
 using System.ComponentModel.DataAnnotations;
 using MyFirstApp.Validation;
-namespace MyFirstApp.Models;    
+namespace MyFirstApp.Models;
 public class Project
-{   
+{
     public int Id { get; set; }
 
     [Required]
-    [RegularExpression( @"^[A-Z]+$", 
+    [RegularExpression(@"^[A-Z]+$",
     ErrorMessage = "اسم المشروع يجب أن يحتوي على أحرف إنجليزية كبيرة فقط")]
     public string Name { get; set; }
     [Required]
     [StringLength(200)]
     public string Description { get; set; }
 
-   [Url]
-   [ProjectValidation]
-   public string? GitHubUrl { get; set; }
+    [Url]
+    [ProjectValidation]
+    public string? GitHubUrl { get; set; }
 
 
-/////////////////
-     // public string Category { get; set; }
+    /////////////////
+    // public string Category { get; set; }
 
-      public bool IsPublic { get; set; }
+    public bool IsPublic { get; set; }
 
-      public string ProjectType { get; set; }
+    public string ProjectType { get; set; }
 
-      public string License { get; set; }
+    public string License { get; set; }
 
     //   public string ImagePath { get; set; }
 
@@ -35,7 +35,7 @@ public class Project
 
 
 
-      // One-to-Many
+    // One-to-Many
     public int CategoryId { get; set; }
     public Category? Category { get; set; }
 
