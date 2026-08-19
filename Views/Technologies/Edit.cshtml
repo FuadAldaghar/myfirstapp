@@ -1,0 +1,12 @@
+@model MyFirstApp.Models.Technology
+
+<h1>تعديل تقنية</h1>
+<form asp-controller="Technologies" asp-action="Edit" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+    <button type="submit" >تعديل</button>
+    <button asp-action="Index">الغاء</button>
+</form>

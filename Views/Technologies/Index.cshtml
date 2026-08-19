@@ -1,0 +1,56 @@
+@model IEnumerable<MyFirstApp.Models.Technology>
+
+
+<button><a asp-action="Create">اضافة تقنية</a></button>
+<table border=2>
+    <thead>
+        <tr>
+            <th>الاسم</th>
+            <th>عدد المشاريع المرتبطة</th>
+            <th>المشاريع</th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var technology in Model)
+        {
+            <tr>
+                <td>
+                    @technology.Name
+                </td>
+
+                <td>
+                    @technology.Projects.Count
+                </td>
+
+
+                <td>
+                    <a asp-action="TechnologyProjects"
+                       asp-route-id="@technology.Id">
+                       المشاريع
+                    </a>
+
+                </td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@technology.Id">
+                        تعديل
+                    </a>
+
+                </td>
+             <td>
+
+                    <form asp-action="Delete" asp-controller="Technologies" method="post">
+                    <input type="hidden" name="id" value="@technology.Id" />
+
+                       <button type="submit"
+                     onclick="return confirm('هل انت متاكد من حذف التقنية')">
+                     حذف
+                    </button>
+                  </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
