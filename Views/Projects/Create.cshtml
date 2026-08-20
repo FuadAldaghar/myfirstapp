@@ -1,3 +1,123 @@
+@model MyFirstApp.Models.Project
+
+@{
+    ViewData["Title"] = "Create Project";
+}
 
 <h1>Create Project</h1>
 
+<hr />
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <!-- Project Information -->
+    <h3>Project Information</h3>
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="GitHubUrl"></label>
+        <input asp-for="GitHubUrl" />
+        <span asp-validation-for="GitHubUrl" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="CategoryId">Category</label>
+
+        <select asp-for="CategoryId"
+                asp-items="ViewBag.Categories">
+            <option value="">-- Select Category --</option>
+        </select>
+
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="IsPublic"></label>
+        <input asp-for="IsPublic" type="checkbox" />
+        <span asp-validation-for="IsPublic" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ProjectType"></label>
+        <input asp-for="ProjectType" />
+        <span asp-validation-for="ProjectType" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="License"></label>
+        <input asp-for="License" />
+        <span asp-validation-for="License" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="TechnologiesCount"></label>
+        <input asp-for="TechnologiesCount" type="number" min="1" max="20" />
+        <span asp-validation-for="TechnologiesCount" class="text-danger"></span>
+    </div>
+
+
+    <!-- Technologies -->
+    <h3>Technologies</h3>
+
+    <div>
+        <label>Project Technologies</label>
+
+        <select name="technologyIds"
+                asp-items="ViewBag.Technologies"
+                multiple size="10">
+        </select>
+    </div>
+
+
+    <!-- Project Details -->
+    <h3>Project Details</h3>
+
+    <div>
+        <label asp-for="ProjectDetails.Client"></label>
+        <input asp-for="ProjectDetails.Client" />
+        <span asp-validation-for="ProjectDetails.Client" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ProjectDetails.StartDate"></label>
+        <input asp-for="ProjectDetails.StartDate" type="date" />
+        <span asp-validation-for="ProjectDetails.StartDate" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ProjectDetails.EndDate"></label>
+        <input asp-for="ProjectDetails.EndDate" type="date" />
+        <span asp-validation-for="ProjectDetails.EndDate" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ProjectDetails.Budget"></label>
+        <input asp-for="ProjectDetails.Budget" type="number" step="0.01" />
+        <span asp-validation-for="ProjectDetails.Budget" class="text-danger"></span>
+    </div>
+
+
+    <!-- Submit -->
+    <div>
+        <button type="submit">Create Project</button>
+        <a asp-action="Index">Back to Projects</a>
+    </div>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

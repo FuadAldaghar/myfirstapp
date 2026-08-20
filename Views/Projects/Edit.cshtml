@@ -1,1 +1,124 @@
-<h2>تعديل المشروع</h2>
+@model MyFirstApp.Models.Project
+
+@{
+    ViewData["Title"] = "Edit Project";
+}
+
+<h1>Edit Project</h1>
+
+<hr />
+
+<form asp-action="Edit" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <!-- Project Information -->
+    <h3>Project Information</h3>
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" value="@Model.Name"/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" value="@Model.Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="GitHubUrl"></label>
+        <input asp-for="GitHubUrl" value="@Model.GitHubUrl" />
+        <span asp-validation-for="GitHubUrl" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="CategoryId">Category</label>
+
+        <select asp-for="CategoryId"
+                asp-items="ViewBag.Categories"
+                value="@Model.Category.Id">
+            <option value="">-- Select Category --</option>
+        </select>
+
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="IsPublic"></label>
+        <input asp-for="IsPublic" value="@Model.IsPublic" type="checkbox" />
+        <span asp-validation-for="IsPublic" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ProjectType"></label>
+        <input asp-for="ProjectType" value="@Model.ProjectType" />
+        <span asp-validation-for="ProjectType" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="License"></label>
+        <input asp-for="License" />
+        <span asp-validation-for="License" class="text-danger" value="@Model.License"></span>
+    </div>
+
+    <div>
+        <label asp-for="TechnologiesCount"></label>
+        <input asp-for="TechnologiesCount" type="number" min="1" max="20" value="@Model.TechnologiesCount" />
+        <span asp-validation-for="TechnologiesCount" class="text-danger"></span>
+    </div>
+
+
+    <!-- Technologies -->
+    <h3>Technologies</h3>
+
+    <div>
+        <label>Project Technologies</label>
+
+        <select name="technologyIds"
+                asp-items="ViewBag.Technologies"
+                multiple size="10" value="@Model.Technologies">
+        </select>
+    </div>
+
+
+    <!-- Project Details -->
+    <h3>Project Details</h3>
+
+    <div>
+        <label asp-for="ProjectDetails.Client"></label>
+        <input asp-for="ProjectDetails.Client" />
+        <span asp-validation-for="ProjectDetails.Client" value="@Model.ProjectDetails.Client"></span>
+    </div>
+
+    <div>
+        <label asp-for="ProjectDetails.StartDate"></label>
+        <input asp-for="ProjectDetails.StartDate" type="date" value="@Model.ProjectDetails.StartDate" />
+        <span asp-validation-for="ProjectDetails.StartDate" ></span>
+    </div>
+
+    <div>
+        <label asp-for="ProjectDetails.EndDate"></label>
+        <input asp-for="ProjectDetails.EndDate" type="date" value="@Model.ProjectDetails.EndDate" />
+        <span asp-validation-for="ProjectDetails.EndDate" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ProjectDetails.Budget"></label>
+        <input asp-for="ProjectDetails.Budget" type="number" step="0.01" value="@Model.ProjectDetails.Budget" />
+        <span asp-validation-for="ProjectDetails.Budget" class="text-danger"></span>
+    </div>
+
+
+    <!-- Submit -->
+    <div>
+        <button type="submit">حفظ</button>
+        <a asp-action="Index">رجوع</a>
+    </div>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

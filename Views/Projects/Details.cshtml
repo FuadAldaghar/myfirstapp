@@ -1,0 +1,31 @@
+@model MyFirstApp.Models.Project
+
+<h2>تفاصيل المشروع</h2>
+
+<p>الاسم: @Model.Name</p>
+<hr>
+<p>الوصف: @Model.Description</p>
+<hr>
+<p>رابط github: @Model.GitHubUrl?</p>
+<hr>
+<p>فئة المشروع: @Model.Category</p>
+<p>هل المشروع عام: @Model.IsPublic</p>
+<hr>
+<p>نوع المشروع: @Model.ProjectType</p>
+<hr>
+<p>الترخيص: @Model.License</p>
+<hr>
+<p>عدد التقنيات: @Model.TechnologiesCount</p>
+<hr>
+<p>اسم العميل: @Model.ProjectDetails?.Client</p>
+<hr>
+<p>تاريخ البدء: @Model.ProjectDetails?.StartDate</p>
+<hr>
+<p>تاريخ الانتهاء: @Model.ProjectDetails?.EndDate</p>
+<hr>
+<p>الميزانية: @Model.ProjectDetails?.Budget</p>
+    
+
+
+
+

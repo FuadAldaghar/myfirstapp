@@ -80,28 +80,31 @@
                 </td>
 
                 <td>
-                    @(project.IsPublic ? "YES" : "NO")
+                    @(project.IsPublic ? "عام" : "خاص")
                 </td>
 
                 <td>
-                    <a asp-action="Details"
+                    <a asp-action="Details" 
                        asp-route-id="@project.Id">
                         DETAILS
                     </a>
 
                     |
 
-                    <a asp-action="Edit"
+                    <a asp-action="Edit"  
                        asp-route-id="@project.Id">
                         EDIT
                     </a>
 
-                    |
+                    
+                    <form asp-action="Delete" asp-controller="Projects" method="post">
+                    <input type="hidden" name="id" value="@project.Id" />
 
-                    <a asp-action="Delete"
-                       asp-route-id="@project.Id">
-                        DELETE
-                    </a>
+                        <button type="submit"
+                        onclick="return confirm('هل انت متاكد من حذف المشروع')">
+                        حذف
+                        </button>
+                    </form>
                 </td>
             </tr>
         }
