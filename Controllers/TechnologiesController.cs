@@ -91,7 +91,7 @@ namespace MyFirstApp.Controllers
 
         public IActionResult TechnologyProjects(int id)
         {      
-                var technologyprojects = _context.Projects.Where(p =>p.CategoryId==id)
+                var technologyprojects = _context.Projects.Where(p =>p.Technologies.Any(T=>T.Id ==id))
                 .Include(p => p.Category)
                  .Include(p => p.Technologies)
                  .Include(p => p.ProjectDetails)

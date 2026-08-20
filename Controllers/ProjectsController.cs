@@ -28,7 +28,14 @@ namespace MyFirstApp.Controllers
         // GET: /Projects/Details/5
         public IActionResult Details(int id)
         {
-            return View();
+             var projects = _context.Projects
+                .Include(p => p.Category)
+                .Include(p => p.Technologies)
+                .Include(p => p.ProjectDetails)
+                .ToList();
+
+            return View(projects);
+          
         }
 
         // GET: /Projects/Create
