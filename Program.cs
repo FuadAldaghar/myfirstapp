@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyFirstApp.Data;
+using MyFirstApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
             builder.Configuration.GetConnectionString("DefaultConnection")
         )
     ));
+//dependency injection_step_1
+builder.Services.AddTransient<ProjectService>();
 
 var app = builder.Build();
 
