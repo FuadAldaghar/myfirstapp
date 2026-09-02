@@ -8,6 +8,7 @@ namespace MyFirstApp.Controllers
 {
     public class ProjectsController : Controller
     {
+
         //private readonly AppDbContext _context;
         private readonly ProjectService _projectService;
         //private readonly ProjectService _projectService2;
@@ -16,19 +17,20 @@ namespace MyFirstApp.Controllers
             _projectService = projectService;
             //_projectService2 = projectService2;
         }
+    
 
-        //public ProjectsController(AppDbContext context)
-        //{
-        //    _context = context;
-        //     _projectService = new ProjectService(context);
-        //}
+   
+
 
         // GET: /Projects
         public IActionResult Index()
         {
+
             //Console.WriteLine($"Service_______________________________________________________________________1: {_projectService.Id}");
             //Console.WriteLine($"Sece_______________________________________________________________________2: {_projectService2.Id}");
             var projects = _projectService.GetAllProjects();
+
+
             return View(projects);
         }
 

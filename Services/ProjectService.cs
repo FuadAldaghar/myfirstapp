@@ -7,7 +7,11 @@ namespace MyFirstApp.Services
     public class ProjectService
     {
         private readonly AppDbContext _context;
+<<<<<<< HEAD
         //public Guid Id { get; } = Guid.NewGuid();
+=======
+
+>>>>>>> c75ee7cecb36bd2777296a24f93488e9b966a985
         public ProjectService(AppDbContext context)
         {
             _context = context;
